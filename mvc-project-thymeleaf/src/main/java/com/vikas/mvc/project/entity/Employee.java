@@ -7,25 +7,28 @@ import jakarta.persistence.*;
 public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private int id;
+    @Column(name = "user_id")
+    private String user_id;
     @Column(name = "first_name")
     private String firstName;
     @Column(name = "last_name")
     private String lastName;
     @Column(name = "email")
     private String email;
+    @Column(name = "role")
+    private String role;
 
     public Employee(){}
-    // id is not included in constructor as it is auto generated
-    public Employee(String firstName, String lastName, String email) {
+    public Employee(String user_id,String firstName, String lastName, String email, String role) {
+        this.user_id = user_id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
+        this.role = role;
     }
 
-    public int getId() {
-        return id;
+    public String getUser_id() {
+        return user_id;
     }
     public String getFirstName() {
         return firstName;
@@ -36,9 +39,11 @@ public class Employee {
     public String getEmail() {
         return email;
     }
+    public String getRole(){ return role;};
 
-    public void setId(int id) {
-        this.id = id;
+
+    public void setUser_id(String user_id) {
+        this.user_id = user_id;
     }
     public void setFirstName(String firstName) {
         this.firstName = firstName;
@@ -49,11 +54,12 @@ public class Employee {
     public void setEmail(String email) {
         this.email = email;
     }
+    public void setRole(String role) {this.role = role;}
 
     @Override
     public String toString() {
         return "Employee{" +
-                "id=" + id +
+                "id=" + user_id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
