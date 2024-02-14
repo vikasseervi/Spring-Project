@@ -35,13 +35,13 @@
                 <td th:text="${tempEmployee.email}"/>
                 <td th:text="${tempEmployee.role}"/>
                 <td>
-                    <!-- Appends to url ?employeeId = xxx -->
-                    <a th:href="@{/employees/showFormForUpdate(employeeId=${tempEmployee.user_id})}"
+                    <!-- Appends to url ?employeeUsername = xxx -->
+                    <a th:href="@{/employees/showFormForUpdate(employeeUsername=${tempEmployee.username})}"
                         class="btn btn-info btn-sm">
                         Update
                     </a>
                     <!-- Delete Button -->
-                    <a th:href="@{/employees/delete(employeeId=${tempEmployee.user_id})}"
+                    <a th:href="@{/employees/delete(employeeUsername=${tempEmployee.username})}"
                        class="btn btn-danger btn-sm"
                         onclick="if(!(confirm('Are you sure you want to delete this employee?'))) return false ">
                         Delete

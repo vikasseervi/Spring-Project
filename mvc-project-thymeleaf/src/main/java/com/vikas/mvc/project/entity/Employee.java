@@ -2,33 +2,34 @@ package com.vikas.mvc.project.entity;
 
 import jakarta.persistence.*;
 
+
 @Entity
 @Table(name = "employee")
 public class Employee {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "user_id")
-    private String user_id;
+    @Column(name = "username")
+    private String username;
     @Column(name = "first_name")
     private String firstName;
     @Column(name = "last_name")
     private String lastName;
     @Column(name = "email")
     private String email;
-    @Column(name = "role")
-    private String role;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "user_role")
+    private Roles role;
 
     public Employee(){}
-    public Employee(String user_id,String firstName, String lastName, String email, String role) {
-        this.user_id = user_id;
+    public Employee(String username,String firstName, String lastName, String email, Roles role) {
+        this.username = username;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.role = role;
     }
 
-    public String getUser_id() {
-        return user_id;
+    public String getUsername() {
+        return username;
     }
     public String getFirstName() {
         return firstName;
@@ -39,11 +40,10 @@ public class Employee {
     public String getEmail() {
         return email;
     }
-    public String getRole(){ return role;};
+    public Roles getRole(){ return role;};
 
-
-    public void setUser_id(String user_id) {
-        this.user_id = user_id;
+    public void setUsername(String username) {
+        this.username = username;
     }
     public void setFirstName(String firstName) {
         this.firstName = firstName;
@@ -54,15 +54,16 @@ public class Employee {
     public void setEmail(String email) {
         this.email = email;
     }
-    public void setRole(String role) {this.role = role;}
+    public void setRole(Roles role) {this.role = role;}
 
     @Override
     public String toString() {
         return "Employee{" +
-                "id=" + user_id +
+                ", username='" + username + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
+                ", role=" + role +
                 '}';
     }
 }

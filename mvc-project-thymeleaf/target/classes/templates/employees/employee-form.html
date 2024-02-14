@@ -15,18 +15,22 @@
     <form action="#" th:action="@{/employees/save}" th:object="${employee}" method="post">
         <!-- add hidden form field to handle the update -->
 
-        <input type="text" th:field="*{user_id}"
-               class="form-control mb-4 w-25" placeholder="Username">
-        <input type="text" th:field="*{firstName}"
-               class="form-control mb-4 w-25" placeholder="First Name">
-        <input type="text" th:field="*{lastName}"
-               class="form-control mb-4 w-25" placeholder="Last Name">
-        <input type="text" th:field="*{email}"
-               class="form-control mb-4 w-25" placeholder="Email">
-        <input type="text" th:field="*{role}"
-               class="form-control mb-4 w-25" placeholder="Role">
-        <button type="submit" class="btn btn-info col-2">Save</button>
+        <input type="text" th:field="*{username}" class="form-control mb-4 w-25" placeholder="Username">
+        <input type="text" th:field="*{firstName}" class="form-control mb-4 w-25" placeholder="First Name">
+        <input type="text" th:field="*{lastName}" class="form-control mb-4 w-25" placeholder="Last Name">
+        <input type="text" th:field="*{email}" class="form-control mb-4 w-25" placeholder="Email">
 
+        <div class="mb-4">
+            <label class="form-label">Role:</label>
+            <div class="form-check">
+                <div class="form-check-inline" th:each="role : ${T(com.vikas.mvc.project.entity.Roles).values()}">
+                    <input class="form-check-input me-1" type="radio" th:field="*{role}" th:value="${role}"/>
+                    <label class="form-check-label" th:text="${role}" style="padding-right: 30px;"></label>
+                </div>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-info col-2 mt-3">Save</button>
     </form>
     <hr>
     <a th:href="@{/employees/list}">Back to Employees list</a>
