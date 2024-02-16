@@ -1,6 +1,7 @@
 package com.vikas.mvc.project.service;
 
 import com.vikas.mvc.project.entity.Employee;
+import org.springframework.data.domain.Sort;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -16,4 +17,15 @@ public interface EmployeeService {
 
     void deleteEmployeeByUsername(String username);
 
+    List<Employee> findAllByOrderByFirstNameAsc();
+    List<Employee> findAllByOrderByFirstNameDesc();
+
+    List<Employee> findAllByOrderByLastNameAsc();
+    List<Employee> findAllByOrderByLastNameDesc();
+
+    public List<Employee> findAllByOrderByEmailAsc();
+    public List<Employee> findAllByOrderByEmailDesc();
+
+    public List<Employee> findAllByOrderByRoleAsc();
+    public List<Employee> findAllByOrderByRoleDesc();
 }

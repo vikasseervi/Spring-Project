@@ -14,4 +14,5 @@ public interface MemberService {
     void saveMember(Member member);
 
     void deleteMemberByUsername(String username);
+
 }

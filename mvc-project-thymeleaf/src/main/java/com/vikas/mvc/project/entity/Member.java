@@ -17,10 +17,8 @@ public class Member {
     private String password;
 
     @Column(name = "active")
-    private int active;
+    private Boolean active;
 
-//    @OneToOne(mappedBy = "member", cascade = CascadeType.ALL)
-//    private Employee employee;
 
     public Member(){}
 
@@ -36,7 +34,7 @@ public class Member {
         return username;
     }
 
-    public int getActive() {
+    public Boolean getActive() {
         return active;
     }
 
@@ -48,7 +46,7 @@ public class Member {
         this.password = password;
     }
 
-    public void setActive(int active) {
+    public void setActive(Boolean active) {
         this.active = active;
     }
 

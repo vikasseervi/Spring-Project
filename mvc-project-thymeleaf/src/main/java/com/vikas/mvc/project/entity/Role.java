@@ -4,49 +4,19 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "role")
-@IdClass(RoleKey.class)
 public class Role {
-    @Id
-    @Column(name = "username")
-    private String username;
+    @EmbeddedId
+    private RoleId roleId;
 
-    @Id
-    @Enumerated(EnumType.STRING)
-    @Column(name = "user_role")
-    private Roles role;
-
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "username", referencedColumnName = "username")
-//    private Employee employee;
-
-    public Role(){}
-
-    public Role(String username, Roles role) {
-        this.username = username;
-        this.role = role;
+    public Role(RoleId roleId) {
+        this.roleId = roleId;
     }
 
-    public String getUsername() {
-        return username;
+    public RoleId getRoleId() {
+        return roleId;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public Roles getRole() {
-        return role;
-    }
-
-    public void setRole(Roles role) {
-        this.role = role;
-    }
-
-    @Override
-    public String toString() {
-        return "Role{" +
-                "username='" + username + '\'' +
-                ", role=" + role +
-                '}';
+    public void setRoleId(RoleId roleId) {
+        this.roleId = roleId;
     }
 }

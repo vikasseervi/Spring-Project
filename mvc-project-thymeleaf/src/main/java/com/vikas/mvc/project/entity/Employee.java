@@ -18,6 +18,7 @@ public class Employee {
     @Column(name = "user_role")
     private Roles role;
 
+
     public Employee(){}
     public Employee(String username,String firstName, String lastName, String email, Roles role) {
         this.username = username;
@@ -26,17 +27,6 @@ public class Employee {
         this.email = email;
         this.role = role;
     }
-
-//    @OneToOne(cascade = CascadeType.ALL)
-//    @JoinColumn(name = "username", referencedColumnName = "username")
-//    private Member member;
-
-//    @ElementCollection(targetClass = Roles.class)
-//    @CollectionTable(name = "employee_role", joinColumns = @JoinColumn(name = "username"))
-//    @Column(name = "role", nullable = false)
-//    @Enumerated(EnumType.STRING)
-//    private Set<Roles> roles = new HashSet<>();
-
 
     public String getUsername() {
         return username;

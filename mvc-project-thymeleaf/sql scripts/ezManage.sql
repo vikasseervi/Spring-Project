@@ -17,7 +17,7 @@
     CREATE TABLE `role` (
       `username` VARCHAR(50) NOT NULL,
       `user_role` ENUM('ROLE_EMPLOYEE', 'ROLE_MANAGER', 'ROLE_ADMIN') NOT NULL,
-      PRIMARY KEY (`username`, `user_role`),
+      UNIQUE KEY (`username`, `user_role`),
       FOREIGN KEY (`username`) REFERENCES `member` (`username`)
     ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 

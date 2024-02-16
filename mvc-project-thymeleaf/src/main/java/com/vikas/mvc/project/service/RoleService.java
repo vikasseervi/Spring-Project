@@ -1,11 +1,14 @@
 package com.vikas.mvc.project.service;
 
 import com.vikas.mvc.project.entity.Role;
-import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 public interface RoleService {
 
-    void saveRole(Role role);
+    List<Role> findAllByUsername(String username);
 
-    void deleteRoleByUsername(String username);
+    void deleteAllRoleByUsername(String username);
+
+    void saveRole(Role role);
 }
