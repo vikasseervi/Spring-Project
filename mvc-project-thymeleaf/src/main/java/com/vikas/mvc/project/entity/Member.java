@@ -19,6 +19,9 @@ public class Member {
     @Column(name = "active")
     private int active;
 
+//    @OneToOne(mappedBy = "member", cascade = CascadeType.ALL)
+//    private Employee employee;
+
     public Member(){}
 
     public Member(String username) {

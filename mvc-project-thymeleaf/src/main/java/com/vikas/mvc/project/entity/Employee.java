@@ -2,7 +2,6 @@ package com.vikas.mvc.project.entity;
 
 import jakarta.persistence.*;
 
-
 @Entity
 @Table(name = "employee")
 public class Employee {
@@ -27,6 +26,17 @@ public class Employee {
         this.email = email;
         this.role = role;
     }
+
+//    @OneToOne(cascade = CascadeType.ALL)
+//    @JoinColumn(name = "username", referencedColumnName = "username")
+//    private Member member;
+
+//    @ElementCollection(targetClass = Roles.class)
+//    @CollectionTable(name = "employee_role", joinColumns = @JoinColumn(name = "username"))
+//    @Column(name = "role", nullable = false)
+//    @Enumerated(EnumType.STRING)
+//    private Set<Roles> roles = new HashSet<>();
+
 
     public String getUsername() {
         return username;
@@ -54,6 +64,7 @@ public class Employee {
     public void setEmail(String email) {
         this.email = email;
     }
+
     public void setRole(Roles role) {this.role = role;}
 
     @Override

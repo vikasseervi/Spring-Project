@@ -7,11 +7,7 @@ public interface EmployeeDAO {
     List<Employee> findAllEmployee();
     Employee findEmployeeByUsername(String username);
     int findIdByUsername(String username);
-
-
     void saveEmployee(Employee employee);
-
-
     void deleteEmployeeByUsername(String username);
     void deleteMemberById(int id);
     void deleteRoleByUsername(String username);

@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "role")
+@IdClass(RoleKey.class)
 public class Role {
     @Id
     @Column(name = "username")
@@ -13,6 +14,10 @@ public class Role {
     @Enumerated(EnumType.STRING)
     @Column(name = "user_role")
     private Roles role;
+
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "username", referencedColumnName = "username")
+//    private Employee employee;
 
     public Role(){}
 
