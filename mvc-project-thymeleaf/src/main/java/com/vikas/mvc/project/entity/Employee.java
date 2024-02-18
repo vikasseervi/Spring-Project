@@ -18,6 +18,10 @@ public class Employee {
     @Column(name = "user_role")
     private Roles role;
 
+//    @OneToOne
+//    @JoinColumn(name = "username")
+//    private Member member;
+
 
     public Employee(){}
     public Employee(String username,String firstName, String lastName, String email, Roles role) {

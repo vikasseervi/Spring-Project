@@ -19,6 +19,8 @@ public class Member {
     @Column(name = "active")
     private Boolean active;
 
+//    @OneToOne
+//    private Employee employee;
 
     public Member(){}
 

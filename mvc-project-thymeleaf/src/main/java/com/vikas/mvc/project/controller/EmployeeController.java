@@ -26,7 +26,6 @@ public class EmployeeController {
         this.memberService = memberService;
         this.roleService = roleService;
     }
-
     @GetMapping("/list")
     public String listEmployees(Model model, @RequestParam(name = "sort", defaultValue = "firstName") String sortField,
                                 @RequestParam(name = "order", defaultValue = "asc") String sortOrder) {
