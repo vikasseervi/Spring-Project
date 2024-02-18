@@ -15,7 +15,7 @@ public class SecurityConfig {
 
     // For custom tables in database
     @Bean
-    public UserDetailsManager userDetails(DataSource dataSource){
+    public UserDetailsManager userDetails(DataSource dataSource) {
         JdbcUserDetailsManager jdbcUserDetailsManager = new JdbcUserDetailsManager(dataSource);
         // retrieve a user by user_id
         jdbcUserDetailsManager.setUsersByUsernameQuery(
@@ -31,52 +31,45 @@ public class SecurityConfig {
 
 
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception{
-        httpSecurity.authorizeHttpRequests(configure -> configure
-                        .requestMatchers("/").hasRole(Roles.EMPLOYEE.name())
-                        .requestMatchers("/leaders**").hasRole(Roles.MANAGER.name())
-                        .requestMatchers("/systems/**").hasRole(Roles.ADMIN.name()) // ** means all sub-directories
-                        .anyRequest().authenticated()
-                )
-                .formLogin(form ->
-                        form
-                                .loginPage("/employees/login")
-                                .loginProcessingUrl("/authenticateTheUser")
-                                .permitAll()
-                )
+    public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
+        httpSecurity
+                .authorizeRequests(configure -> configure
+                        .requestMatchers("/employees").hasAnyRole(Roles.ADMIN.name(), String.valueOf(Roles.MANAGER), String.valueOf(Roles.EMPLOYEE))
+                        .anyRequest().authenticated())
+                .formLogin(form -> form
+                        .loginPage("/login")
+                        .loginProcessingUrl("/authenticateTheUser")
+                        .defaultSuccessUrl("/employees/list")
+                        .permitAll())
                 .logout(logout -> logout.permitAll())
-                .exceptionHandling(configure ->
-                        configure.accessDeniedPage("/employees/access-denied")
-                );
-        // "loginPage" is a mapping to the login controller built by the user ( me ;-) )
-        // here authenticateTheUser is a Controller(No Controller mapping required) provided by Spring by default and no need to write code to authenticate the user;
+                .exceptionHandling(configure -> configure.accessDeniedPage("/access-denied"));
         return httpSecurity.build();
     }
 }
 
 
-  /* // Add support for JDBC... no more hard coding;
-    @Bean
-    public UserDetailsManager userDetailsManager(DataSource dataSource){
-        return new JdbcUserDetailsManager(dataSource);
-    }
-     */
 //    @Bean
-//    public InMemoryUserDetailsManager userDetailsManager() {
-//        UserDetails vikas = User.builder()
-//                .username("vikas")
-//                .password("{noop}test123")
-//                .roles("EMPLOYEE")
-//                .build();
-//        UserDetails abdul = User.builder()
-//                .username("abdul")
-//                .password("{noop}test123")
-//                .roles("EMPLOYEE", "MANAGER")
-//                .build();
-//        UserDetails prakash = User.builder()
-//                .username("prakash")
-//                .password("{noop}test123")
-//                .roles("EMPLOYEE", "MANAGER", "ADMIN")
-//                .build();
-//        return new InMemoryUserDetailsManager(vikas, abdul, prakash);
+//    public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception{
+//        httpSecurity.authorizeHttpRequests(configure -> configure
+////                        .requestMatchers("/").hasRole(String.valueOf(Roles.EMPLOYEE))
+////                        .requestMatchers("/leaders/**").hasRole(String.valueOf(Roles.MANAGER))
+////                        .requestMatchers("/systems/**").hasRole(String.valueOf(Roles.ADMIN)) // ** means all sub-directories
+//                        .requestMatchers("/").hasAnyRole(String.valueOf(Roles.EMPLOYEE), String.valueOf(Roles.MANAGER), String.valueOf(Roles.ADMIN))
+//                        .anyRequest().authenticated()
+//                )
+//                .formLogin(form ->
+//                        form
+//                                .loginPage("/login")
+//                                .loginProcessingUrl("/authenticateTheUser")
+//                                .defaultSuccessUrl("/list")
+//                                .permitAll()
+//                )
+//                .logout(logout -> logout.permitAll())
+//                .exceptionHandling(configure ->
+//                        configure.accessDeniedPage("/access-denied")
+//                );
+//        // "loginPage" is a mapping to the login controller built by the user ( me ;-) )
+//        // here authenticateTheUser is a Controller(No Controller mapping required) provided by Spring by default and no need to write code to authenticate the user;
+//        return httpSecurity.build();
 //    }
+//}
