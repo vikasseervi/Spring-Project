@@ -8,27 +8,41 @@
 <!--    <link rel="stylesheet" href="./sort.css">-->
 <!--    <link rel="stylesheet" href="./header.css">-->
     <title>ezManage</title>
+    <style>
+        .table {
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+            overflow: hidden;
+
+        }
+        .header {
+            background-color: #212529;
+            color: #FFFFFF;
+            padding: 20px;
+            position: relative;
+            border-bottom-left-radius: 15px;
+            border-bottom-right-radius: 15px;
+            margin-bottom: 20px;
+        }
+
+        .logout {
+            position: absolute;
+            top: 50%;
+            right: 20px;
+            transform: translateY(-50%);
+        }
+    </style>
 </head>
 <body>
 
 <div class="container">
 
-    <div class="header" style="background-color: #2C3E50; color: #FFFFFF; padding: 20px; position: relative; border-bottom-left-radius: 20px; border-bottom-right-radius: 20px; margin-bottom: 20px;">
-        <h2 style="margin: 0; font-size: 32px;">ezManage</h2>
-        <div class="logout" style="position: absolute; top: 50%; right: 20px; transform: translateY(-50%);">
+    <div class="header">
+        <h1 style="margin: 0; font-size: 40px;">ezManage </h1>
+        <div class="logout">
             <a href="/logout" class="btn" style="color: #FFFFFF; background-color: #E74C3C; border: none; padding: 8px 16px; font-size: 16px; border-radius: 20px; text-transform: uppercase; transition: all 0.3s ease;">Logout</a>
         </div>
     </div>
-
-
-    <!--    <header class="container-fluid bg-info py-2 text-white sticky-top">-->
-<!--        <div class="row align-items-center">-->
-<!--            <div class="col-md-6 h3 m-0">ezManage</div>-->
-<!--            <div class="col-md-6 text-end">-->
-<!--                <a href="@{/logout}" class="btn btn-sm btn-light px-2 me-2">Logout</a>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </header>-->
 
     <!--    Add a button -->
     <a th:href="@{/employees/showFormForAdd}"
@@ -40,8 +54,8 @@
             <tr>
                 <th>
                     First Name
-                    <a href="?sort=lastName&order=asc">&#9650;</a>
-                    <a href="?sort=lastName&order=desc">&#9660;</a>
+                    <a href="?sort=firstName&order=asc">&#9650;</a>
+                    <a href="?sort=firstName&order=desc">&#9660;</a>
                 </th>
                 <th>
                     Last Name
