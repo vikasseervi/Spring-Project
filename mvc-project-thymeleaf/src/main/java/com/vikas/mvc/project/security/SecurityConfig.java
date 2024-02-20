@@ -41,7 +41,13 @@ public class SecurityConfig {
                         .loginProcessingUrl("/authenticateTheUser")
                         .defaultSuccessUrl("/employees/list")
                         .permitAll())
-                .logout(logout -> logout.permitAll())
+                .logout(logout ->
+                        logout
+                                .logoutUrl("/logout")
+                                .logoutSuccessUrl("/login") // Redirect to login page after logout
+                                .invalidateHttpSession(true) // Invalidate session
+                                .deleteCookies("JSESSIONID") // Delete cookies
+                )
                 .exceptionHandling(configure -> configure.accessDeniedPage("/access-denied"));
         return httpSecurity.build();
     }

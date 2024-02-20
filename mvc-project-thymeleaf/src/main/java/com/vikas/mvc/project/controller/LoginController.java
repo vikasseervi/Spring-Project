@@ -11,6 +11,11 @@ public class LoginController {
         return "login";
     }
 
+    @GetMapping("/logout")
+    public String showLogoutPage() {
+        return "login";
+    }
+
     @GetMapping("/access-denied")
     public String showAccessDinedPage(){
         return "access-denied";
