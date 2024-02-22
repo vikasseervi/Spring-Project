@@ -16,7 +16,7 @@
 
     CREATE TABLE `role` (
       `username` VARCHAR(50) NOT NULL,
-      `user_role` ENUM('EMPLOYEE', 'MANAGER', 'ADMIN') NOT NULL,
+      `user_role` ENUM('ROLE_EMPLOYEE', 'ROLE_MANAGER', 'ROLE_ADMIN') NOT NULL,
       UNIQUE KEY (`username`, `user_role`),
       FOREIGN KEY (`username`) REFERENCES `member` (`username`)
     ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -26,7 +26,7 @@
       `first_name` VARCHAR(45) DEFAULT NULL,
       `last_name` VARCHAR(45) DEFAULT NULL,
       `email` VARCHAR(45) DEFAULT NULL,
-      `user_role` ENUM('EMPLOYEE', 'MANAGER', 'ADMIN') DEFAULT NULL,
+      `user_role` ENUM('ROLE_EMPLOYEE', 'ROLE_MANAGER', 'ROLE_ADMIN') DEFAULT NULL,
       FOREIGN KEY (`username`) REFERENCES `member` (`username`)
     ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -41,21 +41,21 @@
       ('avani', '{bcrypt}$2a$12$pBdU.51Jmo2YKoN3ASkTyeXGRxoC5d6kirz7JHPcWwfHrSwiyIqTK', 1);
 
     INSERT INTO `role` (`username`, `user_role`) VALUES
-          ('abdul', 'EMPLOYEE'),
-          ('yash', 'EMPLOYEE'),
-          ('pratibha', 'EMPLOYEE'),
-          ('avani', 'EMPLOYEE'),
-          ('avani', 'MANAGER'),
-          ('anusha', 'EMPLOYEE'),
-          ('anusha', 'MANAGER'),
-          ('vikas', 'EMPLOYEE'),
-          ('vikas', 'MANAGER'),
-          ('vikas', 'ADMIN');
+          ('abdul', 'ROLE_EMPLOYEE'),
+          ('yash', 'ROLE_EMPLOYEE'),
+          ('pratibha', 'ROLE_EMPLOYEE'),
+          ('avani', 'ROLE_EMPLOYEE'),
+          ('avani', 'ROLE_MANAGER'),
+          ('anusha', 'ROLE_EMPLOYEE'),
+          ('anusha', 'ROLE_MANAGER'),
+          ('vikas', 'ROLE_EMPLOYEE'),
+          ('vikas', 'ROLE_MANAGER'),
+          ('vikas', 'ROLE_ADMIN');
 
     INSERT INTO `employee` (`username`, `first_name`, `last_name`, `email`, `user_role`) VALUES
-      ('abdul', 'Abdul', 'Ahad', 'abdul@ahad', 'EMPLOYEE'),
-      ('yash', 'Yash', 'Prakash', 'yash@prakash', 'EMPLOYEE'),
-      ('pratibha', 'Pratibha', 'Sharma', 'pratibha@sharma', 'EMPLOYEE'),
-      ('avani', 'Avani', 'Gupta', 'avani@gupta', 'MANAGER'),
-      ('anusha', 'Anusha', 'Reddy', 'anusha@reddy', 'MANAGER'),
-      ('vikas', 'Vikas', 'Seervi', 'vikas@seervi', 'ADMIN');
+      ('abdul', 'Abdul', 'Ahad', 'abdul@ahad', 'ROLE_EMPLOYEE'),
+      ('yash', 'Yash', 'Prakash', 'yash@prakash', 'ROLE_EMPLOYEE'),
+      ('pratibha', 'Pratibha', 'Sharma', 'pratibha@sharma', 'ROLE_EMPLOYEE'),
+      ('avani', 'Avani', 'Gupta', 'avani@gupta', 'ROLE_MANAGER'),
+      ('anusha', 'Anusha', 'Reddy', 'anusha@reddy', 'ROLE_MANAGER'),
+      ('vikas', 'Vikas', 'Seervi', 'vikas@seervi', 'ROLE_ADMIN');

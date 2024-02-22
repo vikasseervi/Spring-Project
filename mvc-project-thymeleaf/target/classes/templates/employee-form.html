@@ -20,6 +20,17 @@
             top: 50%;
             right: 20px;
             transform: translateY(-50%);
+            color: #FFFFFF;
+            background-color: #E74C3C;
+            border: none;
+            padding: 8px 16px;
+            font-size: 16px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            transition: background-color 0.3s ease; /* Added transition for background-color */
+        }
+        .logout:hover {
+            background-color: rgba(231, 76, 60, 0.8); /* Dimmer background color on hover */
         }
         .custom-container {
             padding-top: 0;
@@ -38,10 +49,11 @@
 <body>
 <div class="container">
 
+    <!--HEADER-->
     <div class="header">
         <h1 style="margin: 0; font-size: 40px;">ezManage </h1>
-        <div class="logout">
-            <a href="/logout" class="btn" style="color: #FFFFFF; background-color: #E74C3C; border: none; padding: 8px 16px; font-size: 16px; border-radius: 20px; text-transform: uppercase; transition: all 0.3s ease;">Logout</a>
+        <div>
+            <a href="/logout" class="btn logout">Logout</a>
         </div>
     </div>
 
@@ -74,13 +86,38 @@
 
         <div class="mb-3">
             <label class="form-label">Role:</label>
-            <div class="form-check">
-                <div class="form-check-inline" th:each="role : ${T(com.vikas.mvc.project.entity.Roles).values()}">
-                    <input class="form-check-input me-1" type="radio" id="role-{{role}}" th:field="*{role}" th:value="${role}" />
-                    <label class="form-check-label" for="role-{{role}}" th:text="${role}" style="padding-right: 30px;"></label>
+<!--            <div class="form-check">-->
+<!--                <th:block th:if="${hasRole('ROLE_ADMIN')}">-->
+<!--                <div class="form-check-inline" th:each="role : ${T(com.vikas.mvc.project.entity.Roles).values()}">-->
+<!--                        <input class="form-check-input me-1" type="radio" id="role-{{role}}" th:field="*{role}" th:value="${role}">-->
+<!--                        <label class="form-check-label" for="role-{{role}}" th:text="${role}" style="padding-right: 30px;"></label>-->
+<!--                    </div>-->
+<!--                </th:block>-->
+<!--                <th:block th:if="${hasRole('MANAGER')}">-->
+<!--                <div class="form-check-inline" th:each="role : ${T(com.vikas.mvc.project.entity.Roles).values()}">-->
+<!--                        <th:block th:unless="${role.equals('ROLE_ADMIN')}">-->
+<!--                            <input class="form-check-input me-1" type="radio" id="role-{{role}}" th:field="*{role}" th:value="${role}">-->
+<!--                            <label class="form-check-label" for="role-{{role}}" th:text="${role}" style="padding-right: 30px;"></label>-->
+<!--                        </th:block>-->
+<!--                    </div>-->
+<!--                </th:block>-->
+<!--                <th:block th:else>-->
+<!--                    <p class="text-danger">You are not authorized to set user roles.</p>-->
+<!--                </th:block>-->
+<!--            </div>-->
+
+            <div class="mb-3">
+                <label class="form-label">Role:</label>
+                <div class="form-check">
+                    <div class="form-check-inline" th:each="role : ${T(com.vikas.mvc.project.entity.Roles).values()}">
+                        <input class="form-check-input me-1" type="radio" id="role-{{role}}" th:field="*{role}" th:value="${role}" />
+                        <label class="form-check-label" for="role-{{role}}" th:text="${role}" style="padding-right: 30px;"></label>
+                    </div>
                 </div>
             </div>
         </div>
+
+
 
         <button type="submit" class="btn btn-primary col-2 mt-3">Save</button>
     </form>
