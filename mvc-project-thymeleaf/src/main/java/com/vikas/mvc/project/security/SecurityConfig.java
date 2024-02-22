@@ -52,30 +52,3 @@ public class SecurityConfig {
         return httpSecurity.build();
     }
 }
-
-
-//    @Bean
-//    public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception{
-//        httpSecurity.authorizeHttpRequests(configure -> configure
-////                        .requestMatchers("/").hasRole(String.valueOf(Roles.EMPLOYEE))
-////                        .requestMatchers("/leaders/**").hasRole(String.valueOf(Roles.MANAGER))
-////                        .requestMatchers("/systems/**").hasRole(String.valueOf(Roles.ADMIN)) // ** means all sub-directories
-//                        .requestMatchers("/").hasAnyRole(String.valueOf(Roles.EMPLOYEE), String.valueOf(Roles.MANAGER), String.valueOf(Roles.ADMIN))
-//                        .anyRequest().authenticated()
-//                )
-//                .formLogin(form ->
-//                        form
-//                                .loginPage("/login")
-//                                .loginProcessingUrl("/authenticateTheUser")
-//                                .defaultSuccessUrl("/list")
-//                                .permitAll()
-//                )
-//                .logout(logout -> logout.permitAll())
-//                .exceptionHandling(configure ->
-//                        configure.accessDeniedPage("/access-denied")
-//                );
-//        // "loginPage" is a mapping to the login controller built by the user ( me ;-) )
-//        // here authenticateTheUser is a Controller(No Controller mapping required) provided by Spring by default and no need to write code to authenticate the user;
-//        return httpSecurity.build();
-//    }
-//}

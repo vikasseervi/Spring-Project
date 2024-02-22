@@ -1,9 +1,6 @@
 package com.vikas.mvc.project.service;
 
 import com.vikas.mvc.project.entity.Employee;
-import org.springframework.data.domain.Sort;
-import org.springframework.transaction.annotation.Transactional;
-
 import java.util.List;
 import java.util.Optional;
 
