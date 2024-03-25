@@ -14,6 +14,10 @@ public class RoleId implements Serializable {
     @Column(name = "user_role")
     private Roles role;
 
+    public RoleId() {
+        super();
+    }
+
     public RoleId(String username, Roles role) {
         this.username = username;
         this.role = role;

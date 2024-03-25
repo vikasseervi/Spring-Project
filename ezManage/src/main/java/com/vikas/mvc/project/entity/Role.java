@@ -8,6 +8,10 @@ public class Role {
     @EmbeddedId
     private RoleId roleId;
 
+    public Role() {
+        super();
+    }
+
     public Role(RoleId roleId) {
         this.roleId = roleId;
     }

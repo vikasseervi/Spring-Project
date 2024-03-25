@@ -81,7 +81,7 @@ public class EmployeeController {
             memberService.saveMember(new Member(employee.getUsername()));
             employeeService.saveEmployee(employee);
         }
-        return "redirect:/list";
+        return "redirect:/employees/list";
     }
 
     @GetMapping("/showFormForUpdate")
@@ -102,6 +102,6 @@ public class EmployeeController {
         employeeService.deleteEmployeeByUsername(username);
         roleService.deleteAllRoleByUsername(username);
         memberService.deleteMemberByUsername(username);
-        return "redirect:/list";
+        return "redirect:/employees/list";
     }
 }

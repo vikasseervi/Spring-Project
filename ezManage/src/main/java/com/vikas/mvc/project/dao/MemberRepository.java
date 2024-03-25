@@ -8,5 +8,5 @@ public interface MemberRepository extends JpaRepository<Member, Integer> {
     Member findByUsername(String username);
 
     @Transactional
-    Member deleteByUsername(String username);
+    void deleteByUsername(String username);
 }
