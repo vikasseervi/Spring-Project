@@ -11,8 +11,10 @@ public interface MemberService {
 
     Member findByUsername(String username);
 
+    @Transactional
     void saveMember(Member member);
 
+    @Transactional
     void deleteMemberByUsername(String username);
 
 }

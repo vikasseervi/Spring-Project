@@ -80,6 +80,8 @@ public class EmployeeController {
             }
             memberService.saveMember(new Member(employee.getUsername()));
             employeeService.saveEmployee(employee);
+            Role role = new Role(new RoleId(employee.getUsername(), employee.getRole()));
+            roleService.saveRole(role);
         }
         return "redirect:/employees/list";
     }

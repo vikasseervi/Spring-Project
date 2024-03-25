@@ -12,6 +12,7 @@ public interface EmployeeService {
 
     Optional<Employee> findEmployeeByUsername(String username);
 
+    @Transactional
     void saveEmployee(Employee employee);
 
     @Transactional
